@@ -45,6 +45,7 @@ const ORBIT_FOV_MAX = 42;
 const ORBIT_WHEEL_FOV = 0.0011;
 const ORBIT_AUTO_YAW_PER_MS = 0.00028;
 const ORBIT_LERP = 0.14;
+const ORBIT_DOUBLE_TAP_MS = 320;
 const SHAPE_ORDER = ["fractal", "orb", "cube"] as const;
 const AUTO_MORPH_HOLD_MS = 2600;
 
