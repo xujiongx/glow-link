@@ -16,4 +16,5 @@ npm run dev
 ```
 
 - 首页：`#/`
+- 作品集：`#/works`
 - Glow Ink：`#/glow-ink`

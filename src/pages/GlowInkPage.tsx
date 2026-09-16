@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { ArrowLeft, Download, Eraser, LoaderCircle } from "lucide-react";
 
 import { createRenderer } from "../glow-ink/renderer";
+import { iconProps } from "../icons";
 import { navigate } from "../routing";
 
 export function GlowInkPage() {
@@ -106,7 +108,8 @@ export function GlowInkPage() {
             onClick={() => navigate("home")}
             tabIndex={chromeHidden ? -1 : 0}
           >
-            ← 首页
+            <ArrowLeft {...iconProps} className="ui-icon" />
+            首页
           </button>
           <div className="glow-bar-copy">
             <p className="glow-brand-name">Glow Ink</p>
@@ -120,6 +123,7 @@ export function GlowInkPage() {
             onClick={onClear}
             tabIndex={chromeHidden ? -1 : 0}
           >
+            <Eraser {...iconProps} className="ui-icon" />
             清空
           </button>
           <button
@@ -129,6 +133,11 @@ export function GlowInkPage() {
             disabled={exporting}
             tabIndex={chromeHidden ? -1 : 0}
           >
+            {exporting ? (
+              <LoaderCircle {...iconProps} className="ui-icon is-spinning" />
+            ) : (
+              <Download {...iconProps} className="ui-icon" />
+            )}
             {exporting ? "导出中" : "导出"}
           </button>
         </div>

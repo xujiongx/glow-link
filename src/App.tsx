@@ -6,6 +6,7 @@ import { BlackHoleBackground } from "./components/BlackHoleBackground";
 import { SiteChrome } from "./components/SiteChrome";
 import { GlowInkPage } from "./pages/GlowInkPage";
 import { HomePage } from "./pages/HomePage";
+import { WorksPage } from "./pages/WorksPage";
 import { getRouteFromHash, type Route } from "./routing";
 
 export default function App() {
@@ -20,13 +21,20 @@ export default function App() {
     return () => window.removeEventListener("hashchange", sync);
   }, []);
 
-  const isHome = route === "home";
+  const showSiteChrome = route === "home" || route === "works";
+  const showBlackHole = route === "home" || route === "works";
 
   return (
     <div className={`shell shell-${route}`}>
-      {isHome ? <BlackHoleBackground /> : null}
-      {isHome ? <SiteChrome route={route} /> : null}
-      {isHome ? <HomePage /> : <GlowInkPage />}
+      {showBlackHole ? <BlackHoleBackground /> : null}
+      {showSiteChrome ? <SiteChrome route={route} /> : null}
+      {route === "home" ? (
+        <HomePage />
+      ) : route === "works" ? (
+        <WorksPage />
+      ) : (
+        <GlowInkPage />
+      )}
     </div>
   );
 }

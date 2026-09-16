@@ -47,6 +47,9 @@
 
 .glow-back {
   appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   flex-shrink: 0;
   margin: 0;
   border: 1px solid rgba(255, 255, 255, 0.14);

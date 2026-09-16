@@ -1,5 +1,8 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
+
+import { iconProps } from "../icons";
 import { navigate } from "../routing";
 
 export function HomePage() {
@@ -15,9 +18,10 @@ export function HomePage() {
           <button
             type="button"
             className="home-button"
-            onClick={() => navigate("glow-ink")}
+            onClick={() => navigate("works")}
           >
-            打开 Glow Ink
+            浏览作品
+            <ArrowRight {...iconProps} className="ui-icon" />
           </button>
         </div>
       </div>
