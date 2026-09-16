@@ -5,6 +5,7 @@
 ## 作品
 
 - **Glow Ink**（站内）：手写发光字，基于 [Radiance Cascades](https://vgpu.sh/examples/radiance-cascades)
+- **Glass Fractal**（站内）：玻璃分形，基于 [Glass Fractal](https://vgpu.sh/examples/glass-fractal)
 - **家庭记账**：[money.xujiong.cloud](https://money.xujiong.cloud/)
 - **多人临时聊天室**：[bun.xujiong.cloud](https://bun.xujiong.cloud/)
 - **点菜网站**：[menu.xujiong.cloud](https://menu.xujiong.cloud/)
@@ -25,3 +26,4 @@ npm run dev
 - 首页：`#/`
 - 作品集：`#/works`
 - Glow Ink：`#/glow-ink`
+- Glass Fractal：`#/glass-fractal`

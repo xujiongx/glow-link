@@ -7,7 +7,7 @@ export type WorkItem =
       readonly blurb: string;
       readonly tag: string;
       readonly kind: "internal";
-      readonly route: Extract<Route, "glow-ink">;
+      readonly route: Extract<Route, "glow-ink" | "glass-fractal">;
     }
   | {
       readonly id: string;
@@ -26,6 +26,14 @@ export const WORKS: readonly WorkItem[] = [
     title: "Glow Ink",
     blurb: "用手写笔画绘制发光文字，光线在画布上真实弹射。",
     tag: "WebGPU · Radiance Cascades",
+  },
+  {
+    id: "glass-fractal",
+    kind: "internal",
+    route: "glass-fractal",
+    title: "Glass Fractal",
+    blurb: "玻璃四面体包裹可变分形网格与液态球体，支持透射与反射。",
+    tag: "WebGPU · Glass Fractal",
   },
   {
     id: "money",

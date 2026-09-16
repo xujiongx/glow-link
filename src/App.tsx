@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import { BlackHoleBackground } from "./components/BlackHoleBackground";
 import { SiteChrome } from "./components/SiteChrome";
+import { GlassFractalPage } from "./pages/GlassFractalPage";
 import { GlowInkPage } from "./pages/GlowInkPage";
 import { HomePage } from "./pages/HomePage";
 import { WorksPage } from "./pages/WorksPage";
@@ -24,17 +25,16 @@ export default function App() {
   const showSiteChrome = route === "home" || route === "works";
   const showBlackHole = route === "home" || route === "works";
 
+  let page = <HomePage />;
+  if (route === "works") page = <WorksPage />;
+  else if (route === "glow-ink") page = <GlowInkPage />;
+  else if (route === "glass-fractal") page = <GlassFractalPage />;
+
   return (
     <div className={`shell shell-${route}`}>
       {showBlackHole ? <BlackHoleBackground /> : null}
       {showSiteChrome ? <SiteChrome route={route} /> : null}
-      {route === "home" ? (
-        <HomePage />
-      ) : route === "works" ? (
-        <WorksPage />
-      ) : (
-        <GlowInkPage />
-      )}
+      {page}
     </div>
   );
 }

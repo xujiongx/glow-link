@@ -70,6 +70,10 @@ a {
   background: #000;
 }
 
+.shell-glass-fractal {
+  background: #fafafa;
+}
+
 .shell-glow-ink {
   background:
     radial-gradient(120% 80% at 50% -10%, rgba(255, 179, 106, 0.12), transparent 55%),
