@@ -1,24 +1,19 @@
-# Glow Ink · 手写发光字
+# HORIZON · WebGPU 作品集
 
-基于 [vgpu Radiance Cascades](https://vgpu.sh/examples/radiance-cascades) 的交互示例：用指针书写，笔画本身作为 HDR 光源，经 Jump Flood 距离场与六级 radiance cascades 合成二维全局光照。
+个人作品集首页，背景使用 [vgpu Optimized Black Hole](https://vgpu.sh/examples/optimized-black-hole)。右上角「作品」菜单可进入交互实验。
+
+## 作品
+
+- **Glow Ink**：手写发光字，基于 [Radiance Cascades](https://vgpu.sh/examples/radiance-cascades)
 
 ## 开发
 
-需要支持 **WebGPU** 的浏览器（Chrome / Edge / Safari Technology Preview 等）。
+需要支持 **WebGPU** 的浏览器。
 
 ```bash
 npm install
 npm run dev
 ```
 
-## 操作
-
-- 在画布上按住拖动书写
-- 每一笔使用不同色相的发光颜色
-- 「清空」「导出」可擦除笔画或下载 PNG；移动端书写时控件会自动让出画布
-
-## 技术栈
-
-- React + Vite
-- [vgpu](https://vgpu.sh) WebGPU 渲染
-- `@vgpu/wgsl` 加载 `.wgsl` 模块
+- 首页：`#/`
+- Glow Ink：`#/glow-ink`
