@@ -1,6 +1,6 @@
-# HORIZON · WebGPU 作品集
+# HORIZON
 
-个人作品集首页，背景使用 [vgpu Optimized Black Hole](https://vgpu.sh/examples/optimized-black-hole)。右上角「作品」菜单可进入交互实验。
+个人作品集首页，背景使用 [vgpu Optimized Black Hole](https://vgpu.sh/examples/optimized-black-hole)。右上角「作品」可进入作品列表。
 
 ## 作品
 
