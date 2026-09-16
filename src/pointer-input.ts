@@ -12,7 +12,12 @@ export function installLightPaintInput(canvas: HTMLCanvasElement) {
     | { from: [number, number]; to: [number, number]; stroke: number }
     | undefined;
   const previousTouchAction = canvas.style.touchAction;
+  const previousUserSelect = canvas.style.userSelect;
   canvas.style.touchAction = "none";
+  canvas.style.userSelect = "none";
+  canvas.style.setProperty("-webkit-user-select", "none");
+  canvas.style.setProperty("-webkit-touch-callout", "none");
+  canvas.style.setProperty("-webkit-user-drag", "none");
 
   const point = (event: PointerEvent): [number, number] => {
     const rect = canvas.getBoundingClientRect();
@@ -33,8 +38,14 @@ export function installLightPaintInput(canvas: HTMLCanvasElement) {
     else pending = { from, to, stroke };
   };
 
+  const preventBrowserGestures = (event: Event) => {
+    event.preventDefault();
+  };
+
   const down = (event: PointerEvent) => {
     if (!event.isPrimary || activePointer !== -1) return;
+    // Stop long-press text selection / callout / scroll while drawing.
+    event.preventDefault();
     try {
       canvas.setPointerCapture?.(event.pointerId);
     } catch {
@@ -48,6 +59,7 @@ export function installLightPaintInput(canvas: HTMLCanvasElement) {
 
   const move = (event: PointerEvent) => {
     if (!event.isPrimary || event.pointerId !== activePointer) return;
+    event.preventDefault();
     const next = point(event);
     extend(last, next);
     last = next;
@@ -55,6 +67,7 @@ export function installLightPaintInput(canvas: HTMLCanvasElement) {
 
   const up = (event: PointerEvent) => {
     if (!event.isPrimary || event.pointerId !== activePointer) return;
+    event.preventDefault();
     try {
       if (canvas.hasPointerCapture?.(activePointer)) {
         canvas.releasePointerCapture(activePointer);
@@ -65,10 +78,14 @@ export function installLightPaintInput(canvas: HTMLCanvasElement) {
     activePointer = -1;
   };
 
-  canvas.addEventListener("pointerdown", down);
-  canvas.addEventListener("pointermove", move);
-  canvas.addEventListener("pointerup", up);
-  canvas.addEventListener("pointercancel", up);
+  canvas.addEventListener("pointerdown", down, { passive: false });
+  canvas.addEventListener("pointermove", move, { passive: false });
+  canvas.addEventListener("pointerup", up, { passive: false });
+  canvas.addEventListener("pointercancel", up, { passive: false });
+  canvas.addEventListener("contextmenu", preventBrowserGestures);
+  canvas.addEventListener("selectstart", preventBrowserGestures);
+  canvas.addEventListener("dragstart", preventBrowserGestures);
+  canvas.addEventListener("gesturestart", preventBrowserGestures as EventListener);
 
   return {
     take(): PaintSegment | undefined {
@@ -81,6 +98,13 @@ export function installLightPaintInput(canvas: HTMLCanvasElement) {
       canvas.removeEventListener("pointermove", move);
       canvas.removeEventListener("pointerup", up);
       canvas.removeEventListener("pointercancel", up);
+      canvas.removeEventListener("contextmenu", preventBrowserGestures);
+      canvas.removeEventListener("selectstart", preventBrowserGestures);
+      canvas.removeEventListener("dragstart", preventBrowserGestures);
+      canvas.removeEventListener(
+        "gesturestart",
+        preventBrowserGestures as EventListener
+      );
       try {
         if (activePointer !== -1 && canvas.hasPointerCapture?.(activePointer)) {
           canvas.releasePointerCapture(activePointer);
@@ -91,6 +115,10 @@ export function installLightPaintInput(canvas: HTMLCanvasElement) {
       activePointer = -1;
       pending = undefined;
       canvas.style.touchAction = previousTouchAction;
+      canvas.style.userSelect = previousUserSelect;
+      canvas.style.removeProperty("-webkit-user-select");
+      canvas.style.removeProperty("-webkit-touch-callout");
+      canvas.style.removeProperty("-webkit-user-drag");
     },
   };
 }
