@@ -4,7 +4,14 @@
 
 ## 作品
 
-- **Glow Ink**：手写发光字，基于 [Radiance Cascades](https://vgpu.sh/examples/radiance-cascades)
+- **Glow Ink**（站内）：手写发光字，基于 [Radiance Cascades](https://vgpu.sh/examples/radiance-cascades)
+- **家庭记账**：[money.xujiong.cloud](https://money.xujiong.cloud/)
+- **多人临时聊天室**：[bun.xujiong.cloud](https://bun.xujiong.cloud/)
+- **点菜网站**：[menu.xujiong.cloud](https://menu.xujiong.cloud/)
+- **拾趣跑**：[run.xujiong.cloud](https://run.xujiong.cloud/)
+- **Shelf 文档检索**：[search.xujiong.cloud](https://search.xujiong.cloud/)
+- **朝暮记**：[day.xujiong.cloud](https://day.xujiong.cloud/)
+- **AI 分身**：[www.xujiong.cloud](https://www.xujiong.cloud/)
 
 ## 开发
 
